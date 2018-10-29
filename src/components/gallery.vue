@@ -44,9 +44,18 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
+  
+  .gallery-inner {
+    overflow-x : hidden !important;
+  }
 .gallery-title {
   margin: 30px 0px 0px 0px;
 }
+
+.card {
+  padding: 0px;
+}
+
 
 </style>

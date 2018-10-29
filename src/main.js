@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vue2Filters from 'vue2-filters'
 import App from './App.vue'
 import Menu from './components/menubar.vue'
 import Banner from './components/banner.vue'
@@ -16,6 +17,7 @@ Vue.component('gallery' , gallery);
 Vue.component('reviews' , reviews);
 
 Vue.use(VueRouter)
+Vue.use(Vue2Filters)
 
 var router = new VueRouter({
 	routes: [{path:'/' , component: Banner},
