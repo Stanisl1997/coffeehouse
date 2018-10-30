@@ -14,29 +14,31 @@
 </template>
 <script>
 export default {
-  props: ['elements'],
+  props: ["elements"],
   data() {
     return {
-      nameLogo: 'Кофейня №1',
-      icons: ['fa-cookie-bite', 'fa-calculator','fa-images','fa-phone','fa-star'],
-      pages: ['/banner','/price-calculator' , '/gallery' , '/reviews']
-    }
+      nameLogo: "Кофейня №1",
+      icons: [
+        "fa-cookie-bite",
+        "fa-calculator",
+        "fa-images",
+        "fa-phone",
+        "fa-star"
+      ],
+      pages: ["/banner", "/price-calculator", "/gallery", "/reviews"]
+    };
   },
-  methods : {
-    onMouseOver(element){  
+  methods: {
+    onMouseOver(element) {
       element.showIcon = true;
-      },
-    onMouseLeave(element){
+    },
+    onMouseLeave(element) {
       element.showIcon = false;
     }
   }
-  }
-
-
+};
 </script>
 <style lang="scss">
-
-
 .header-inner {
   padding-top: 20px;
 }
@@ -51,7 +53,7 @@ a {
   }
 }
 
-.menu-bar_element>a {
+.menu-bar_element > a {
   padding: 3px 5px;
   margin-bottom: 0px;
   margin-right: 4px;
@@ -61,8 +63,8 @@ a {
   &:hover {
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.5s ;
-   text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+    text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -70,20 +72,19 @@ ul {
   list-style: none;
 }
 
-
 .logo {
   font-size: 47px;
-  transition: all 0.5s ;
+  transition: all 0.5s;
   &:hover {
-    transition: all 0.5s ;
-   text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+    text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
   }
 }
 
 .menu-bar_element {
   padding: 5px 10px;
   margin-left: 10px;
-  position:relative;
+  position: relative;
 }
 i {
   position: absolute;
@@ -92,11 +93,11 @@ i {
 }
 
 .icon-move-enter-active {
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 
 .icon-move-leave-active {
-  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .icon-move-enter {
@@ -107,7 +108,4 @@ i {
   transform: translateY(-10px);
   opacity: 0;
 }
-
-
-
 </style>

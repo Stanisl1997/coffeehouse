@@ -13,27 +13,24 @@ export default {
     return {
       bannerTitle: "Добро пожаловать!",
       bannerTitleSmall: "Welcome!"
-    }
+    };
   }
-}
-
+};
 </script>
 <style lang="scss">
 .banner-inner {
-  width:100%;
-  background: url('../assets/banner.jpg') center no-repeat;
+  width: 100%;
+  background: url("../assets/banner.jpg") center no-repeat;
   background-size: cover;
   height: 87%;
 }
 
-.banner-inner_title{
-	padding-top: 70px;
+.banner-inner_title {
+  padding-top: 70px;
 }
 
 .quote-slider {
   width: 70%;
   margin: 90px auto;
 }
-
-
 </style>

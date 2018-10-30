@@ -27,32 +27,35 @@
 </template>
 <script>
 export default {
-
   data() {
     return {
-      mainTitle: 'Контакты и Отзывы',
-      contactsTitle: 'Как нас найти?',
-      contacts: [{ name: 'Адрес', value: '84300, Краматорск, Улица Василия Стуса, 44' , link: 'https://www.google.cz/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8F+%D0%A1%D1%82%D1%83%D1%81%D0%B0,+44,+%D0%9A%D1%80%D0%B0%D0%BC%D0%B0%D1%82%D0%BE%D1%80%D1%81%D1%8C%D0%BA,+%D0%94%D0%BE%D0%BD%D0%B5%D1%86%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+84300/@48.7393003,37.5867212,17z/data=!3m1!4b1!4m5!3m4!1s0x40df971caf802b47:0x28cd9c1770d5b012!8m2!3d48.7393003!4d37.5889099'},
-        { name: 'Телефон', value: '+380(50)111-111-111' },
-        { name: 'Електронная почта', value: 'example@gmail.com'}
+      mainTitle: "Контакты и Отзывы",
+      contactsTitle: "Как нас найти?",
+      contacts: [
+        {
+          name: "Адрес",
+          value: "84300, Краматорск, Улица Василия Стуса, 44",
+          link:
+            "https://www.google.cz/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8F+%D0%A1%D1%82%D1%83%D1%81%D0%B0,+44,+%D0%9A%D1%80%D0%B0%D0%BC%D0%B0%D1%82%D0%BE%D1%80%D1%81%D1%8C%D0%BA,+%D0%94%D0%BE%D0%BD%D0%B5%D1%86%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+84300/@48.7393003,37.5867212,17z/data=!3m1!4b1!4m5!3m4!1s0x40df971caf802b47:0x28cd9c1770d5b012!8m2!3d48.7393003!4d37.5889099"
+        },
+        { name: "Телефон", value: "+380(50)111-111-111" },
+        { name: "Електронная почта", value: "example@gmail.com" }
       ],
-      icons: ['fa-map-marked-alt', 'fa-phone-square', 'fa-envelope']
-    }
-
+      icons: ["fa-map-marked-alt", "fa-phone-square", "fa-envelope"]
+    };
   }
-}
-
+};
 </script>
 <style lang="scss">
-.reviews-inner{
+.reviews-inner {
   height: 85%;
 }
 .reviews-inner_content {
   padding-top: 100px;
-  background: url('../assets/contact.jpg') no-repeat;
+  background: url("../assets/contact.jpg") no-repeat;
   bacground-position: left center;
   background-size: cover;
-  height:90%;
+  height: 90%;
 
   ul {
     padding: 0;
@@ -70,8 +73,6 @@ export default {
       position: static;
     }
   }
-
-
 }
 
 .reviews-title {
@@ -79,7 +80,6 @@ export default {
 }
 
 .comment-form {
-
   button {
     background-color: #005b96;
     border: 0px;
@@ -91,6 +91,4 @@ export default {
     }
   }
 }
-
-
 </style>

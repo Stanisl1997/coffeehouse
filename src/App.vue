@@ -10,34 +10,34 @@
 </template>
 <script>
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
-      menuElements: [{name:'Главная',showIcon:false} ,{name:'Калькулятор цены',showIcon:false} , {name:'Галерея',showIcon:false}  ,{name:'Контакты и Отзывы',showIcon:false}]
-    }
+      menuElements: [
+        { name: "Главная", showIcon: false },
+        { name: "Калькулятор цены", showIcon: false },
+        { name: "Галерея", showIcon: false },
+        { name: "Контакты и Отзывы", showIcon: false }
+      ]
+    };
   }
-}
-
+};
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Vollkorn+SC:400,700&subset=cyrillic");
 
-
-
-@import url('https://fonts.googleapis.com/css?family=Vollkorn+SC:400,700&subset=cyrillic');
-
-html,body
-{
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+html,
+body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 #app {
   background-color: #f8f8fa;
-  font-family: 'Vollkorn SC', serif;
+  font-family: "Vollkorn SC", serif;
   color: #1e1f26;
   height: 100vh;
-
 }
 .container {
   width: 1070px;
@@ -45,22 +45,20 @@ html,body
 }
 
 .change-page-enter-active {
-  transition: all .6s ease;
+  transition: all 0.6s ease;
 }
 
 .change-page-leave-active {
-  transition: all .6s;
+  transition: all 0.6s;
 }
 
 .change-page-enter {
   opacity: 0;
-  transform: translateX(100px)
+  transform: translateX(100px);
 }
 
 .change-page-leave-to {
   opacity: 0;
-   transform: translateX(-100px)
+  transform: translateX(-100px);
 }
-
 </style>
-

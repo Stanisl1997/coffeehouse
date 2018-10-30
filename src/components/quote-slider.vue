@@ -1,7 +1,7 @@
 <template>
   <div class="quote-slider">
     <transition-group>
-      <blockquote class="blockquote text-center" v-for="(quote,i,key) in quoteContent" v-show="quote.isActive" key="quote.i">
+      <blockquote class="blockquote text-center" v-for="(quote,i,key) in quoteContent" v-show="quote.isActive" :key="quote.text">
         <p class="mb-0">{{quote.text}}</p>
         <footer class="blockquote-footer">{{quote.author}} <cite title="Source Title">{{quote.source}}</cite></footer>
       </blockquote>
@@ -44,7 +44,8 @@ export default {
           showQuote: false,
           isActive: false
         }
-      ]
+      ],
+      quoteCounter:0
     }
   },
   methods: {
@@ -55,8 +56,19 @@ export default {
           this.quoteContent[j].isActive = false;
         }
       }
+    },
+    changeQuotes() {
+      this.quoteContent[this.quoteCounter].isActive = true;
+      for (var j = 0; j < this.quoteContent.length; j++) {
+        if (j !== this.quoteCounter) {
+          this.quoteContent[j].isActive = false;
+        }
     }
-
+      (this.quoteCounter === this.quoteContent.length - 1) ? this.quoteCounter = 0 : this.quoteCounter++;
+  }
+  },
+  mounted: function quotesChange() {
+    setInterval(()=>{this.changeQuotes()}, 5000)
   }
 }
 
@@ -65,7 +77,6 @@ export default {
 .quote-slider {
   position: relative;
 }
-
 
 blockquote {
   position: absolute;
@@ -96,19 +107,20 @@ blockquote {
 }
 
 .v-enter-active {
-  transition: all .6s ease;
+  transition: all 0.6s ease;
 }
 
 .v-leave-active {
-  transition: all .6s;
+  transition: all 0.6s;
 }
 
 .v-enter {
   opacity: 0;
-  transform: translateX(100px)
+  transform: translateX(200px);
 }
 
 .v-leave-to {
+  transform: translateX(-200px);
   opacity: 0;
 }
 
