@@ -33,6 +33,7 @@ body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
+  overflow-x: hidden;
 }
 #app {
   background-color: #f8f8fa;
