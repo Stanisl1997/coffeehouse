@@ -2,9 +2,10 @@
   <div class="reviews-inner">
     <h1 class="reviews-title text-center">{{mainTitle}}</h1>
     <div class="reviews-inner_content d-flex justify-content-between">
-      <form @click.prevent class="comment-form col-xl-4 ">
+      <form @click.prevent class="comment-form col-xl-6  ml-auto">
         <div class="form-group">
           <div class="col">
+             <label for="form-control">Имя</label>
             <input type="text" class="form-control" placeholder="Имя">
           </div>
         </div>
@@ -16,7 +17,7 @@
           <button @click.prevent type="submit" class="btn btn-primary ">Отправить</button>
         </div>
       </form>
-      <div class="contacts col-xl-5 ">
+      <div class="contacts col-xl-5 mr-auto">
         <h3>{{contactsTitle}}</h3>
         <ul class="contact-list mt-5">
           <li class="contact-list_element d-flex justify-content-start align-items-center mt-2" v-for="(contact,i) in contacts" :key="contact.name"><a :href="contact.link" target="_blank"><i class="fas pr-2" :class='icons[i]'></i>{{contact.name}} : {{contact.value}}</a></li>
