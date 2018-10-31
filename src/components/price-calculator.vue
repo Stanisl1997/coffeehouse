@@ -4,10 +4,10 @@
     <div class="calculator-inner_content">
       <div class="calculator-inner_content__list">
         <ul class="menu-list d-flex flex-column flex-wrap pt-4 justify-content-between ml-auto mr-auto">
-          <li class="menu-list_element d-flex justify-content-between align-items-center" v-for="(item,i,key) in items">
+          <li class="menu-list_element d-flex justify-content-between align-items-center" v-for="(item) in items" :key="item.name">
             {{item.name}}
             <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
-              <li class="price-list_element" v-for="(size,j) in item.size">
+              <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
                 <button class="btn btn-success" :style="{backgroundColor:colors[j]}" @click='priceIncrease(j,item,size)'>{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
             </ul>
           </li>
@@ -23,7 +23,6 @@
         </transition-group>
       </div>
     </div>
-  </div>
   </div>
 </template>
 <script>

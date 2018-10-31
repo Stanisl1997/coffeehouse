@@ -1,13 +1,13 @@
 <template>
   <div class="quote-slider">
     <transition-group>
-      <blockquote class="blockquote text-center" v-for="(quote,i,key) in quoteContent" v-show="quote.isActive" :key="quote.text">
+      <blockquote class="blockquote text-center" v-for="(quote) in quoteContent" v-show="quote.isActive" :key="quote.text">
         <p class="mb-0">{{quote.text}}</p>
         <footer class="blockquote-footer">{{quote.author}} <cite title="Source Title">{{quote.source}}</cite></footer>
       </blockquote>
     </transition-group>
     <div class="slider-controls d-flex justify-content-between">
-      <a href="#" v-for="(quote,i,key) in quoteContent" :class="{active : quote.isActive}" @click.prevent="controlsChange(i)"></a>
+      <a href="#" v-for="(quote,i) in quoteContent" :class="{active : quote.isActive}" @click.prevent="controlsChange(i)" :key="quote.text"></a>
     </div>
   </div>
 </template>

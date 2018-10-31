@@ -3,7 +3,7 @@
   <div class="header-inner d-flex align-items-center justify-content-between">
     <div class="logo navbar-brand col-lg-2"><router-link to="/banner" href="#">{{nameLogo}}</router-link></div>
     <ul class="menu-bar  d-flex justify-content-end align-items-center m-0 p-0 col-lg-7">
-      <li class="menu-bar_element d-flex" @mouseover="onMouseOver(element)" @mouseleave="onMouseLeave(element)" v-for="(element,i) in elements" ><router-link :to="pages[i]" >{{element.name}}
+      <li class="menu-bar_element d-flex" @mouseover="onMouseOver(element)" @mouseleave="onMouseLeave(element)" v-for="(element,i) in elements" :key="element.name" ><router-link :to="pages[i]" >{{element.name}}
         <transition name="icon-move">
         <i v-if="!element.showIcon" class="fas" :class='icons[i]'></i>
          </transition>

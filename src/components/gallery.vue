@@ -2,7 +2,7 @@
   <div class="gallery-inner">
     <h3 class="gallery-title text-center">Галерея</h3>
     <div class="card-deck">
-    	<div class="col-xl-4" v-for="(card,i) in cards">
+    	<div class="col-xl-4" v-for="(card,i) in cards" :key="card.title">
       <div class="card mt-4 text-center">
         <img class="card-img-top" :src="images[i]" height="300px" width="auto" alt="Card image cap">
         <div class="card-body">
