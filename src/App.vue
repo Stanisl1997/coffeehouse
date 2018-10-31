@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  
   name: "app",
   data() {
     return {
@@ -26,10 +27,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Vollkorn+SC:400,700&subset=cyrillic");
-
 html,
 body {
   width: 100%;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
 }
@@ -37,7 +38,7 @@ body {
   background-color: #f8f8fa;
   font-family: "Vollkorn SC", serif;
   color: #1e1f26;
-  height: 100vh;
+  height: 100%;
 }
 .container {
   width: 1070px;

@@ -53,7 +53,6 @@ export default {
 .reviews-inner_content {
   padding-top: 100px;
   background: url("../assets/contact.jpg") no-repeat;
-  bacground-position: left center;
   background-size: cover;
   height: 90%;
 

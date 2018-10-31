@@ -4,11 +4,11 @@
     <div class="calculator-inner_content">
       <div class="calculator-inner_content__list">
         <ul class="menu-list d-flex flex-column flex-wrap pt-4 justify-content-between ml-auto mr-auto">
-          <li class="menu-list_element d-flex justify-content-between align-items-center" v-for="(item) in items" :key="item.name">
+          <li class="menu-list_element d-flex justify-content-between align-items-center" v-for="(item,i) in items" :key="item.name">
             {{item.name}}
             <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j]}" @click='priceIncrease(j,item,size)'>{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
+                <button class="btn btn-success" :style="{backgroundColor:colors[j]}" @click='priceIncrease(j,item,size,i)'>{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
             </ul>
           </li>
         </ul>
@@ -16,8 +16,8 @@
       <div class="cart pt-3 ml-auto mr-auto">
         <h3>Всего ваш заказ будет стоить : {{totallPrice | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}}</h3>
         <h5>Ваш заказ <i class="fas fa-shopping-cart"></i>: </h5>
-        <transition-group tag="ul" class="cart-list d-flex flex-wrap" name='items-list'>
-          <li v-for="(item,k) in cart" class="cart-list_element pl-2 d-flex align-items-start justify-content-between" :key="item.name">{{item.name}}({{item.size}})
+        <transition-group tag="ul" class="cart-list" name='items-list'>
+          <li v-for="(item,k) in cart" class="cart-list_element pl-2 d-flex align-items-start justify-content-between" :key="item.id">{{item.name}}({{item.size}})
             <button class="pl-2 decrease"><i @click='deleteFromCart(k,item)' class="fas fa-times-circle"></i></button>
           </li>
         </transition-group>
@@ -313,22 +313,23 @@ export default {
     };
   },
   methods: {
-    priceIncrease(j, item, size) {
-      this.cartPushItems(j, item, size);
+    priceIncrease(j, item) {
+      this.cartPushItems(j,item);
       item.size[j].amount++;
-      this.totallPrice =
-        this.totallPrice + item.size[j].price * item.size[j].amount;
+      this.totallPrice += item.size[j].price;
     },
 
-    cartPushItems(j, item, size) {
+    cartPushItems(j,item) {
+      let cartLength = this.cart.length;
       let itemCart = {
         name: item.name,
         size: item.size[j].name,
-        price: item.size[j].price
+        price: item.size[j].price,
+        id: cartLength
       };
       this.cart.push(itemCart);
     },
-    deleteFromCart(k, item) {
+    deleteFromCart(k) {
       this.totallPrice -= this.cart[k].price;
       this.cart.splice(k, 1);
     }
@@ -340,7 +341,6 @@ export default {
   background: url("../assets/bg5.jpg") no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 88%;
 
   .calculator-inner_title {
     padding: 20px 0px;
@@ -349,7 +349,6 @@ export default {
   }
 
   .calculator-inner_content {
-    height: 87%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     color: #fffef9;
@@ -404,6 +403,7 @@ export default {
 
     .cart {
       width: 900px;
+      height: 300px;
 
       i {
         position: static;
@@ -421,7 +421,6 @@ export default {
 
       .cart-list_element {
         height: 25px;
-
         .fa-times-circle {
           color: #ff6f69;
         }
@@ -465,6 +464,7 @@ export default {
 
       .items-list-leave-to {
         opacity: 0;
+        transform: translateX(-100px);
       }
 
       .items-list-move {
