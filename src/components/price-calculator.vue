@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       calcTitle: "Сколько будет стоить ваш заказ?",
-      items: [
+      classicCoffeItems: [
         {
           name: "Эспрессо",
           size: [
@@ -70,7 +70,9 @@ export default {
           ],
           isMax: true,
           isSmall: true
-        },
+        }
+      ],
+      gurmanMenuItems: [
         {
           name: "Раф",
           size: [
@@ -130,7 +132,9 @@ export default {
           ],
           isMax: true,
           isSmall: true
-        },
+        }
+      ],
+      coldMenuItems: [
         {
           name: "Фредо",
           size: [
@@ -214,7 +218,9 @@ export default {
           ],
           isMax: true,
           isSmall: false
-        },
+        }
+      ],
+      teaMenuItems: [
         {
           name: "Имбирный чай",
           size: [{ name: "stand", amount: 0, price: 25 }],
@@ -232,7 +238,9 @@ export default {
           size: [{ name: "stand", amount: 0, price: 25 }],
           isMax: false,
           isSmall: false
-        },
+        }
+      ],
+      smousi: [
         {
           name: "Шоколадно-клубничный мафин",
           size: [{ name: "stand", amount: 0, price: 38 }],
@@ -295,12 +303,12 @@ export default {
   },
   methods: {
     priceIncrease(j, item) {
-      this.cartPushItems(j,item);
+      this.cartPushItems(j, item);
       item.size[j].amount++;
       this.totallPrice += item.size[j].price;
     },
 
-    cartPushItems(j,item) {
+    cartPushItems(j, item) {
       let cartLength = this.cart.length;
       let itemCart = {
         name: item.name,
@@ -318,140 +326,9 @@ export default {
 };
 </script>
 <style lang="scss">
-.calculator-inner {
-  background: url("../assets/bg5.jpg") no-repeat;
-  background-position: center center;
+.calculator-inner_content {
+  height: calc(100vh - 150px);
+  background: url(../assets/altBg.jpg) no-repeat bottom;
   background-size: cover;
-  background-attachment: fixed;
-
-  .calculator-inner_title {
-    padding: 20px 0px;
-    background-color: #f8f8fa;
-    margin-bottom: 0;
-  }
-
-  .calculator-inner_content {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fffef9;
-
-    .calculator-inner_content__list {
-      .price-list {
-        padding-left: 15px;
-      }
-
-      .menu-list {
-        height: 385px;
-        width: 100%;
-        padding-left: 0;
-        padding-left: 50px;
-
-        .btn-success {
-          padding: 0;
-          border-color: transparent;
-
-          &:focus {
-            border-color: transparent;
-            outline: none !important;
-            box-shadow: none !important;
-          }
-
-          &:hover {
-            background-color: #4fa640 !important;
-          }
-        }
-
-        .price-list {
-          margin-right: 60px;
-          height: 30px;
-          width: 300px;
-
-          .price {
-            font-size: 20px;
-            margin-right: 5px;
-            margin-left: 5px;
-          }
-        }
-
-        .maxSizeMiss {
-          padding-right: 89px;
-        }
-
-        .smallSizeMiss {
-          width: 200px;
-        }
-      }
-    }
-
-    .cart {
-      width: 1000px;
-      padding-bottom: 30px;
-      height: 179px;
-      i {
-        position: static;
-        font-size: 18px;
-      }
-
-      ul {
-        padding-left: 0;
-        margin-bottom: 0;
-      }
-
-      .order {
-        width: 150px;
-      }
-      .cart-list_element {
-        height: 25px;
-        .fa-times-circle {
-          color: #ff6f69;
-        }
-
-        i {
-          position: static;
-          font-size: 18px;
-          margin-left: -5px;
-          margin-top: 1px;
-          transition: all 0.6s;
-
-          &:hover {
-            font-size: 20px;
-            color: #cc2a36;
-          }
-        }
-
-        button {
-          border: 0px;
-          outline: none;
-          cursor: pointer;
-          background-color: transparent;
-          padding: 0;
-          margin: 0;
-        }
-      }
-
-      .items-list-enter-active {
-        transition: all 0.6s ease;
-      }
-
-      .items-list-leave-active {
-        transition: all 0.6s;
-        position: absolute;
-      }
-
-      .items-list-enter {
-        opacity: 0;
-        transform: translateX(100px);
-      }
-
-      .items-list-leave-to {
-        opacity: 0;
-        transform: translateX(-100px);
-      }
-
-      .items-list-move {
-        transition: transform 0.5s;
-      }
-    }
-  }
 }
 </style>
