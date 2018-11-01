@@ -341,6 +341,7 @@ export default {
   background: url("../assets/bg5.jpg") no-repeat;
   background-position: center center;
   background-size: cover;
+  background-attachment: fixed;
 
   .calculator-inner_title {
     padding: 20px 0px;
@@ -402,9 +403,9 @@ export default {
     }
 
     .cart {
-      width: 900px;
-      height: 300px;
-
+      width: 1000px;
+      padding-bottom: 30px;
+      height: 179px;
       i {
         position: static;
         font-size: 18px;
@@ -418,7 +419,6 @@ export default {
       .order {
         width: 150px;
       }
-
       .cart-list_element {
         height: 25px;
         .fa-times-circle {
