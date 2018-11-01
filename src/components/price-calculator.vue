@@ -2,26 +2,7 @@
   <div class="calculator-inner">
     <h1 class="calculator-inner_title text-center">{{calcTitle}}</h1>
     <div class="calculator-inner_content">
-      <div class="calculator-inner_content__list">
-        <ul class="menu-list d-flex flex-column flex-wrap pt-4 justify-content-between ml-auto mr-auto">
-          <li class="menu-list_element d-flex justify-content-between align-items-center" v-for="(item,i) in items" :key="item.name">
-            {{item.name}}
-            <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
-              <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j]}" @click='priceIncrease(j,item,size,i)'>{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="cart pt-3 ml-auto mr-auto">
-        <h3>Всего ваш заказ будет стоить : {{totallPrice | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}}</h3>
-        <h5>Ваш заказ <i class="fas fa-shopping-cart"></i>: </h5>
-        <transition-group tag="ul" class="cart-list" name='items-list'>
-          <li v-for="(item,k) in cart" class="cart-list_element pl-2 d-flex align-items-start justify-content-between" :key="item.id">{{item.name}}({{item.size}})
-            <button class="pl-2 decrease"><i @click='deleteFromCart(k,item)' class="fas fa-times-circle"></i></button>
-          </li>
-        </transition-group>
-      </div>
+      
     </div>
   </div>
 </template>
