@@ -55,7 +55,7 @@ export default {
   padding-top: 100px;
   background: url("../assets/contact.jpg") no-repeat;
   background-size: cover;
-  height: 90%;
+  height: calc(100vh - 180px);
 
   ul {
     padding: 0;

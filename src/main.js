@@ -6,6 +6,7 @@ import Menu from "./components/menubar.vue";
 import Banner from "./components/banner.vue";
 import qSlider from "./components/quote-slider.vue";
 import priceCalculator from "./components/price-calculator.vue";
+import menuAccordion from "./components/menu-accordion.vue";
 import gallery from "./components/gallery.vue";
 import reviews from "./components/reviews.vue";
 
@@ -13,6 +14,7 @@ Vue.component("menubar", Menu);
 Vue.component("banner", Banner);
 Vue.component("qSlider", qSlider);
 Vue.component("price-calculator", priceCalculator);
+Vue.component("menu-accordion", menuAccordion);
 Vue.component("gallery", gallery);
 Vue.component("reviews", reviews);
 
