@@ -2,9 +2,9 @@
 <div class="container-fluid">
   <div class="row d-flex ">
   <div class="accordeon-inner_content col-xl-7 mt-5">
-  <button class="btn accordeon" @click.prevent="slideMenu($event)" >Классический коффе</button>
+  <button class="btn accordeon" @click.prevent="slideMenu($event)" >Классический кофе</button>
     <ul class="classic-list main-list flex-column justify-content-between">
-      <li class="classic-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in classicCoffeItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
+      <li class="classic-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in classicCoffeItems" :key="item.name">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
                 <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j]}"  @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
@@ -15,7 +15,7 @@
       
   <button class="btn accordeon" @click.prevent ="slideMenu($event)" >Гурман меню</button>
   <ul class="gurman-list main-list  flex-column justify-content-between" >
-      <li class="gurman-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in gurmanMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
+      <li class="gurman-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in gurmanMenuItems" :key="item.name">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
                 <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j]}"  @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
@@ -26,7 +26,7 @@
       
   <button class="btn accordeon" @click.prevent ="slideMenu($event)" >Холодные напитки</button>
   <ul class="cold-list main-list  flex-column justify-content-between" >
-      <li class="cold-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in coldMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
+      <li class="cold-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in coldMenuItems" :key="item.name">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
                 <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
@@ -37,7 +37,7 @@
       
   <button class="btn accordeon " @click.prevent ="slideMenu($event)" >Смузи</button>
   <ul class="smousi-list main-list flex-column  justify-content-between" >
-      <li class="smousi-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in smousiMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
+      <li class="smousi-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in smousiMenuItems" :key="item.name">{{item.name}}
         <ul class="price-list" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
                 <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
@@ -415,12 +415,18 @@ ul {
 
   .accordeon {
     width: 100%;
-    transition: all 0.2s ease;
+    transition: all 0.4s ease-in-out;
     border-radius: 3px;
     font-size: 18px;
-    border-bottom: 0.5px solid grey;
+    margin-top: 5px;
+    opacity: 0.7;
+    font-weight: bold;
     &:hover {
+      transition: all 0.4s;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
       background-color: #83d0c9;
+      //background:linear-gradient(135deg, #61c698 0%,#5ab59e 100%);
+      opacity: 1;
     }
     &:focus {
       box-shadow: none !important;
@@ -439,6 +445,7 @@ ul {
   border-radius: 3px;
   padding: 5px 5px;
   font-size: 15px;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 .price-list {
   width: 400px;
@@ -480,10 +487,13 @@ ul {
 }
 
 .cart {
+  background-color:rgba($color: #fff, $alpha: 0.5);
+  border-radius: 4px;
+
   ul {
     padding-left: 0;
     margin-bottom: 0;
-    height: 250px;
+    min-height: 250px;
   }
   .order {
     width: 150px;
@@ -514,7 +524,7 @@ ul {
   }
 }
 
-.description{
+.description {
   width: 40%;
   text-align: center;
 }
@@ -532,7 +542,7 @@ ul {
 }
 .items-list-leave-to {
   opacity: 0;
-  transform: translateY(-200px);
+  transform: translateY(200px);
 }
 .items-list-move {
   transition: transform 0.3s;
