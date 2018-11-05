@@ -20,13 +20,14 @@ export default {
 <style lang="scss">
 .banner-inner {
   width: 100%;
-  background: url("../assets/banner.jpg") center no-repeat;
+  background: url("../assets/item17.jpg") top no-repeat;
   background-size: cover;
-  height: calc(100vh - 100px);
+  height:calc(100vh - 100px);
+  color:mintcream;
 }
 
 .banner-inner_title {
-  padding-top: 70px;
+  padding-top: 120px;
 }
 
 .quote-slider {

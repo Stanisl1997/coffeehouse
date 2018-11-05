@@ -407,7 +407,7 @@ ul {
   padding-left: 0;
 }
 .row {
-  padding-bottom: calc(100vh - 510px);
+  padding-bottom: calc(100vh - 740px);
 }
 .accordeon-inner_content {
   width: 650px;
@@ -419,13 +419,16 @@ ul {
     border-radius: 3px;
     font-size: 18px;
     margin-top: 5px;
-    opacity: 0.7;
+    opacity: 0.9;
     font-weight: bold;
+    transition: all 0.4s;
+    background-color: #1e1f26;
+    color: #fffef9;
     &:hover {
       transition: all 0.4s;
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
       background-color: #83d0c9;
-      //background:linear-gradient(135deg, #61c698 0%,#5ab59e 100%);
+      color: #1e1f26;
       opacity: 1;
     }
     &:focus {
@@ -445,6 +448,7 @@ ul {
   border-radius: 3px;
   padding: 5px 5px;
   font-size: 15px;
+  font-weight: 500;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 .price-list {
@@ -484,16 +488,19 @@ ul {
   position: sticky;
   top: 10px;
   align-self: flex-start;
+  h3,h5 {
+    color:beige;
+  }
 }
 
 .cart {
-  background-color:rgba($color: #fff, $alpha: 0.5);
+  background-color:rgba($color: #1e1f26, $alpha: 0.7);
   border-radius: 4px;
 
   ul {
     padding-left: 0;
     margin-bottom: 0;
-    min-height: 250px;
+    min-height: 450px;
   }
   .order {
     width: 150px;
@@ -501,6 +508,8 @@ ul {
   .cart-list_element {
     height: 30px;
     font-size: 16px;
+    color:azure;
+    font-weight:500;
     .fa-times-circle {
       color: #ff6f69;
       position: static;

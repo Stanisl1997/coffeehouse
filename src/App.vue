@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div class="container h-a">
       <menubar :elements='menuElements'></menubar>
-    </div>
     <transition name='change-page' mode='out-in'> 
       <router-view></router-view>
     </transition>
@@ -10,7 +8,6 @@
 </template>
 <script>
 export default {
-  
   name: "app",
   data() {
     return {
@@ -35,10 +32,9 @@ body {
   overflow-x: hidden;
 }
 #app {
-  background-color: #f8f8fa;
+  background: #f4f4f8;
   font-family: "Vollkorn SC", serif;
   color: #1e1f26;
-  height: 100%;
 }
 .container {
   width: 1070px;

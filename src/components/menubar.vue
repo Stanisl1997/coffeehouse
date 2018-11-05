@@ -39,8 +39,12 @@ export default {
 };
 </script>
 <style lang="scss">
+#menubar {
+}  
 .header-inner {
   padding-top: 20px;
+  width: 1100px;
+  margin: 0 auto;
 }
 
 a {
