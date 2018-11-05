@@ -1,42 +1,64 @@
 <template>
-  <div class="accordion-inner">
-  <button class="btn btn-primary accordeon">Section1</button>
-    <ul class="classic-list main-list d-flex flex-column justify-content-between">
-      <li class="classic-list_element d-flex align-items-center justify-content-between" v-for="(item) in classicCoffeItems" :key="item.name">{{item.name}}
+<div class="container-fluid">
+  <div class="row d-flex ">
+  <div class="accordeon-inner_content col-xl-7 mt-5">
+  <button class="btn accordeon" @click.prevent="slideMenu($event)" >Классический коффе</button>
+    <ul class="classic-list main-list flex-column justify-content-between">
+      <li class="classic-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in classicCoffeItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j]}">{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j]}"  @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                </li>
             </ul>
       </li>
     </ul>
-  <button class="btn btn-success accordeon">Section2</button>
-  <ul class="gurman-list main-list d-flex flex-column justify-content-between">
-      <li class="gurman-list_element d-flex align-items-center justify-content-between" v-for="(item) in gurmanMenuItems" :key="item.name">{{item.name}}
+      
+  <button class="btn accordeon" @click.prevent ="slideMenu($event)" >Гурман меню</button>
+  <ul class="gurman-list main-list  flex-column justify-content-between" >
+      <li class="gurman-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in gurmanMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j]}">{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j]}"  @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                 </li>
             </ul>
       </li>
     </ul>
-  <button class="btn btn-warning accordeon">Section3</button>
-  <ul class="cold-list main-list d-flex flex-column justify-content-between">
-      <li class="cold-list_element d-flex align-items-center justify-content-between" v-for="(item) in coldMenuItems" :key="item.name">{{item.name}}
+      
+  <button class="btn accordeon" @click.prevent ="slideMenu($event)" >Холодные напитки</button>
+  <ul class="cold-list main-list  flex-column justify-content-between" >
+      <li class="cold-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in coldMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
         <ul class="price-list d-flex align-items-center justify-content-between" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j+1]}">{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                 </li>
             </ul>
       </li>
     </ul>
-  <button class="btn btn-danger accordeon ">Section4</button>
-  <ul class="smousi-list main-list d-flex flex-column  justify-content-between">
-      <li class="smousi-list_element d-flex align-items-center justify-content-between" v-for="(item) in smousiMenuItems" :key="item.name">{{item.name}}
+      
+  <button class="btn accordeon " @click.prevent ="slideMenu($event)" >Смузи</button>
+  <ul class="smousi-list main-list flex-column  justify-content-between" >
+      <li class="smousi-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item,i) in smousiMenuItems" :key="item.name" :style="{backgroundColor:bgColorsListElements[i]}">{{item.name}}
         <ul class="price-list" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
               <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
-                <button class="btn btn-success" :style="{backgroundColor:colors[j+1]}">{{size.name}}</button><span class="price">{{size.price | currency('₴',0,{ symbolOnLeft: false })}}</span></li>
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                 </li>
             </ul>
       </li>
     </ul>
-  </div>
+    </div>
+    <div class="accordeon-inner_cart col-xl-5" >
+<h3 class="mt-5">Всего ваш заказ будет стоить : {{totallPrice | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}}</h3>
+<h5 class="mt-2">Ваш заказ <i class="fas fa-shopping-cart"></i>: </h5>
+      <div class="cart pt-3 ml-auto mr-auto">
+        <transition-group tag="ul" class="cart-list" name='items-list'>
+          <li v-for="(item,k) in cart" class="cart-list_element pl-2 d-flex align-items-start justify-content-between" :key="item.id">{{item.name}} <span class="description">Размер: {{item.size}}, Цена: {{item.price | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}} </span>
+            <button class="pl-2 decrease"><i @click='deleteFromCart(k,item)' class="fas fa-times-circle"></i></button>
+          </li>
+        </transition-group>
+      </div>
+      </div>
+      </div>
+    </div>
 </template>
 <script>
 export default {
@@ -46,8 +68,8 @@ export default {
         {
           name: "Эспрессо",
           size: [
-            { name: "small", amount: 0, price: 13 },
-            { name: "stand", amount: 0, price: 18 }
+            { name: "S", amount: 0, price: 13 },
+            { name: "M", amount: 0, price: 18 }
           ],
           isMax: false,
           isSmall: true
@@ -55,9 +77,9 @@ export default {
         {
           name: "Американо",
           size: [
-            { name: "small", amount: 0, price: 13 },
-            { name: "stand", amount: 0, price: 18 },
-            { name: "MAX", amount: 0, price: 23 }
+            { name: "S", amount: 0, price: 13 },
+            { name: "M", amount: 0, price: 18 },
+            { name: "L", amount: 0, price: 23 }
           ],
           isMax: true,
           isSmall: true
@@ -65,9 +87,9 @@ export default {
         {
           name: "Капучино",
           size: [
-            { name: "small", amount: 0, price: 18 },
-            { name: "stand", amount: 0, price: 23 },
-            { name: "MAX", amount: 0, price: 28 }
+            { name: "S", amount: 0, price: 18 },
+            { name: "M", amount: 0, price: 23 },
+            { name: "L", amount: 0, price: 28 }
           ],
           isMax: true,
           isSmall: true
@@ -75,9 +97,9 @@ export default {
         {
           name: "Латте",
           size: [
-            { name: "small", amount: 0, price: 18 },
-            { name: "stand", amount: 0, price: 23 },
-            { name: "MAX", amount: 0, price: 28 }
+            { name: "S", amount: 0, price: 18 },
+            { name: "M", amount: 0, price: 23 },
+            { name: "L", amount: 0, price: 28 }
           ],
           isMax: true,
           isSmall: true
@@ -85,9 +107,9 @@ export default {
         {
           name: "Мокко",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -95,9 +117,9 @@ export default {
         {
           name: "Карамель Макиато",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -107,9 +129,9 @@ export default {
         {
           name: "Раф",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -117,9 +139,9 @@ export default {
         {
           name: "Кедоровый Латте",
           size: [
-            { name: "small", amount: 0, price: 28 },
-            { name: "stand", amount: 0, price: 33 },
-            { name: "MAX", amount: 0, price: 38 }
+            { name: "S", amount: 0, price: 28 },
+            { name: "M", amount: 0, price: 33 },
+            { name: "L", amount: 0, price: 38 }
           ],
           isMax: true,
           isSmall: true
@@ -127,9 +149,9 @@ export default {
         {
           name: "Какао",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -137,9 +159,9 @@ export default {
         {
           name: "Шоколад",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -147,9 +169,9 @@ export default {
         {
           name: "Имбирный Латте",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -157,9 +179,9 @@ export default {
         {
           name: "Ореховый BOOM",
           size: [
-            { name: "small", amount: 0, price: 23 },
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 33 }
+            { name: "S", amount: 0, price: 23 },
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 33 }
           ],
           isMax: true,
           isSmall: true
@@ -169,8 +191,8 @@ export default {
         {
           name: "Фредо",
           size: [
-            { name: "stand", amount: 0, price: 30 },
-            { name: "MAX", amount: 0, price: 35 }
+            { name: "M", amount: 0, price: 30 },
+            { name: "L", amount: 0, price: 35 }
           ],
           isMax: true,
           isSmall: false
@@ -178,8 +200,8 @@ export default {
         {
           name: "Ice Latte",
           size: [
-            { name: "stand", amount: 0, price: 25 },
-            { name: "MAX", amount: 0, price: 30 }
+            { name: "M", amount: 0, price: 25 },
+            { name: "L", amount: 0, price: 30 }
           ],
           isMax: true,
           isSmall: false
@@ -187,23 +209,23 @@ export default {
         {
           name: "Фраппе",
           size: [
-            { name: "stand", amount: 0, price: 35 },
-            { name: "MAX", amount: 0, price: 40 }
+            { name: "M", amount: 0, price: 35 },
+            { name: "L", amount: 0, price: 40 }
           ],
           isMax: true,
           isSmall: false
         },
         {
           name: "Фруктовый коффе ",
-          size: [{ name: "stand", amount: 0, price: 35 }],
+          size: [{ name: "M", amount: 0, price: 35 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Молочный коктейль",
           size: [
-            { name: "stand", amount: 0, price: 28 },
-            { name: "MAX", amount: 0, price: 32 }
+            { name: "M", amount: 0, price: 28 },
+            { name: "L", amount: 0, price: 32 }
           ],
           isMax: true,
           isSmall: false
@@ -211,23 +233,23 @@ export default {
         {
           name: "Коктейль 'Орео'",
           size: [
-            { name: "stand", amount: 0, price: 30 },
-            { name: "MAX", amount: 0, price: 35 }
+            { name: "M", amount: 0, price: 30 },
+            { name: "L", amount: 0, price: 35 }
           ],
           isMax: true,
           isSmall: false
         },
         {
           name: "Лимонады",
-          size: [{ name: "stand", amount: 0, price: 25 }],
+          size: [{ name: "M", amount: 0, price: 25 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Мятная фиерия",
           size: [
-            { name: "stand", amount: 0, price: 30 },
-            { name: "MAX", amount: 0, price: 35 }
+            { name: "M", amount: 0, price: 30 },
+            { name: "L", amount: 0, price: 35 }
           ],
           isMax: true,
           isSmall: false
@@ -235,8 +257,8 @@ export default {
         {
           name: "Мохито",
           size: [
-            { name: "stand", amount: 0, price: 30 },
-            { name: "MAX", amount: 0, price: 35 }
+            { name: "M", amount: 0, price: 30 },
+            { name: "L", amount: 0, price: 35 }
           ],
           isMax: true,
           isSmall: false
@@ -244,8 +266,8 @@ export default {
         {
           name: "Пина колада",
           size: [
-            { name: "stand", amount: 0, price: 35 },
-            { name: "MAX", amount: 0, price: 40 }
+            { name: "M", amount: 0, price: 35 },
+            { name: "L", amount: 0, price: 40 }
           ],
           isMax: true,
           isSmall: false
@@ -254,19 +276,19 @@ export default {
       teaMenuItems: [
         {
           name: "Имбирный чай",
-          size: [{ name: "stand", amount: 0, price: 25 }],
+          size: [{ name: "M", amount: 0, price: 25 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Цитрусовый чай",
-          size: [{ name: "stand", amount: 0, price: 28 }],
+          size: [{ name: "M", amount: 0, price: 28 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Пряный чай",
-          size: [{ name: "stand", amount: 0, price: 25 }],
+          size: [{ name: "M", amount: 0, price: 25 }],
           isMax: false,
           isSmall: false
         }
@@ -274,97 +296,245 @@ export default {
       smousiMenuItems: [
         {
           name: "Шоколадно-клубничный мафин",
-          size: [{ name: "stand", amount: 0, price: 38 }],
+          size: [{ name: "M", amount: 0, price: 38 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Мятный",
-          size: [{ name: "stand", amount: 0, price: 38 }],
+          size: [{ name: "M", amount: 0, price: 38 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Миндально-кокосовый",
-          size: [{ name: "stand", amount: 0, price: 42 }],
+          size: [{ name: "M", amount: 0, price: 42 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Зеленый",
-          size: [{ name: "stand", amount: 0, price: 38 }],
+          size: [{ name: "M", amount: 0, price: 38 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Ягодный",
-          size: [{ name: "stand", amount: 0, price: 32 }],
+          size: [{ name: "M", amount: 0, price: 32 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Питательный",
-          size: [{ name: "stand", amount: 0, price: 35 }],
+          size: [{ name: "M", amount: 0, price: 35 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Белковый",
-          size: [{ name: "stand", amount: 0, price: 55 }],
+          size: [{ name: "M", amount: 0, price: 55 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Шоколадно-кофейный",
-          size: [{ name: "stand", amount: 0, price: 50 }],
+          size: [{ name: "M", amount: 0, price: 50 }],
           isMax: false,
           isSmall: false
         },
         {
           name: "Морковно-банановый",
-          size: [{ name: "stand", amount: 0, price: 38 }],
+          size: [{ name: "M", amount: 0, price: 38 }],
           isMax: false,
           isSmall: false
         }
       ],
-      colors: ["#1B7EAF", "#415AAC", "#063858"]
+      colorsAddButtons: ["#1B7EAF", "#415AAC", "#063858"],
+      bgColorsListElements: [
+        "#f6cd61",
+        "#a8e6cf",
+        "#dcedc1",
+        "#e3f0ff",
+        "#edc951",
+        "#ffd3b6",
+        "#ffaaa5",
+        "#fe8a71",
+        "#eb6841",
+        "#ff8b94",
+        "#d2e7ff"
+      ],
+      totallPrice: 0,
+      cart: []
     };
+  },
+  methods: {
+    slideMenu(e) {
+      let toggleButton = e.target;
+      let slideList = toggleButton.nextElementSibling;
+      if (toggleButton.classList.contains("accordeon")) {
+        if (slideList.style.maxHeight) {
+          slideList.style.maxHeight = null;
+        } else {
+          slideList.style.maxHeight = slideList.scrollHeight + "px";
+        }
+      }
+    },
+    priceIncrease(j, item) {
+      this.cartPushItems(j, item);
+      item.size[j].amount++;
+      this.totallPrice += item.size[j].price;
+    },
+
+    cartPushItems(j, item) {
+      let cartLength = this.cart.length;
+      let itemCart = {
+        name: item.name,
+        size: item.size[j].name,
+        price: item.size[j].price,
+        id: cartLength
+      };
+      this.cart.push(itemCart);
+    },
+    deleteFromCart(k) {
+      this.totallPrice -= this.cart[k].price;
+      this.cart.splice(k, 1);
+    }
   }
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 ul {
   padding-left: 0;
 }
-.accordion-inner {
-  width: 600px;
+.row {
+  padding-bottom: calc(100vh - 510px);
+}
+.accordeon-inner_content {
+  width: 650px;
+  height: 100%;
 
   .accordeon {
     width: 100%;
-  }
-  .main-list {
-    margin-top: 16px;
-  }
-  .price-list {
-    width: 400px;
-
-    .price-list_element > button {
-      padding: 0px;
-      font-size: 15px;
-      font-weight: normal;
-      border-color: transparent;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    font-size: 18px;
+    border-bottom: 0.5px solid grey;
+    &:hover {
+      background-color: #83d0c9;
     }
-
-    .price {
-      margin-left: 10px;
-      font-size: 20px;
+    &:focus {
+      box-shadow: none !important;
     }
   }
-  .maxSizeMiss{
-    padding-right: 150px;
+}
+.main-list {
+  margin-top: 16px;
+  max-height: 0px;
+  transition: max-height 0.5s ease-out;
+  margin: 0px;
+  overflow: hidden;
+}
+.main-list_element {
+  margin: 5px 0px;
+  border-radius: 3px;
+  padding: 5px 5px;
+  font-size: 15px;
+}
+.price-list {
+  width: 400px;
+  .price-list_element {
+    width: 92px;
+    padding-right: 5px;
   }
-  .smallSizeMiss{
-    width: 241px;
+  .price-list_element > button {
+    padding: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: transparent;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
   }
-} 
+
+  .price {
+    font-size: 17px;
+    margin-left: 5px;
+  }
+}
+.maxSizeMiss {
+  padding-right: 155px;
+}
+.smallSizeMiss {
+  width: 241px;
+}
+
+.fa-shopping-cart {
+  position: static;
+  font-size: 18px;
+}
+
+.accordeon-inner_cart {
+  position: sticky;
+  top: 10px;
+  align-self: flex-start;
+}
+
+.cart {
+  ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    height: 250px;
+  }
+  .order {
+    width: 150px;
+  }
+  .cart-list_element {
+    height: 30px;
+    font-size: 16px;
+    .fa-times-circle {
+      color: #ff6f69;
+      position: static;
+      font-size: 25px;
+      margin-left: -5px;
+      margin-top: 1px;
+      transition: all 0.6s;
+      &:hover {
+        font-size: 27px;
+        color: #cc2a36;
+      }
+    }
+    button {
+      border: 0px;
+      outline: none;
+      cursor: pointer;
+      background-color: transparent;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.description{
+  width: 40%;
+  text-align: center;
+}
+
+.items-list-enter-active {
+  transition: all 0.4s ease-in;
+}
+.items-list-leave-active {
+  transition: all 0.4s ease-out;
+  position: absolute;
+}
+.items-list-enter {
+  opacity: 0;
+  transform: translateY(200px);
+}
+.items-list-leave-to {
+  opacity: 0;
+  transform: translateY(-200px);
+}
+.items-list-move {
+  transition: transform 0.3s;
+}
 </style>

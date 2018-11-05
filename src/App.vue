@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Vollkorn+SC:400,700&subset=cyrillic");
 html,
 body {

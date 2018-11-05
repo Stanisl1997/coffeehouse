@@ -22,7 +22,7 @@ export default {
   width: 100%;
   background: url("../assets/banner.jpg") center no-repeat;
   background-size: cover;
-  height: 87%;
+  height: calc(100vh - 100px);
 }
 
 .banner-inner_title {
