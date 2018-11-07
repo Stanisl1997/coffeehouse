@@ -2,7 +2,7 @@
   <div class="reviews-inner">
     <h1 class="reviews-title text-center">{{mainTitle}}</h1>
     <div class="reviews-inner_content d-flex justify-content-between">
-      <form @click.prevent class="comment-form col-xl-6  ml-auto">
+      <!--<form @click.prevent class="comment-form col-xl-6  ml-auto">                        Wont work without PHP or other backend
         <div class="form-group">
           <div class="col">
              <label for="form-control">Имя</label>
@@ -16,11 +16,32 @@
         <div class="button text-right mr-3">
           <button @click.prevent type="submit" class="btn btn-primary ">Отправить</button>
         </div>
-      </form>
-      <div class="contacts col-xl-5 mr-auto">
-        <h3>{{contactsTitle}}</h3>
-        <ul class="contact-list mt-5">
-          <li class="contact-list_element d-flex justify-content-start align-items-center mt-2" v-for="(contact,i) in contacts" :key="contact.name"><a :href="contact.link" target="_blank"><i class="fas pr-2" :class='icons[i]'></i>{{contact.name}} : {{contact.value}}</a></li>
+      </form> -->
+      <GmapMap
+  :center="{lat:48.739268, lng:37.588998}"
+  :zoom="17"
+  map-type-id="terrain"
+  style="width: 500px; height: 300px"
+>
+  <GmapMarker
+    :key="index"
+    v-for="(m, index) in markers"
+    :position="m.position"
+    :clickable="true"
+    :draggable="true"
+    @click="center=m.position"
+  />
+</GmapMap>
+      <div class="contacts col-xl-6 ml-auto">
+        <h3 class="contacts-title">{{contactsTitle}}</h3>
+        <div class="icons d-flex justify-content-between">
+            <a href="https://www.instagram.com/cofe_one/?hl=ru" class=" d-flex align-items-center " v-for="(item,i) in socialIcons" :key='item.name'>
+              <i class="fab" :class='socialIcons[i].icon'></i>
+              <p class="ml-2">{{item.name}}</p>
+            </a>
+        </div>
+        <ul class="contact-list mt-2">
+          <li class="contact-list_element d-flex justify-content-start align-items-center mt-2" v-for="(contact,i) in contacts" :key="contact.name"><a :href="contact.link" target="_blank"><i class="fas pr-2" :class='contactIcons[i]'></i>{{contact.name}} : {{contact.value}}</a></li>
         </ul>
       </div>
     </div>
@@ -30,8 +51,9 @@
 export default {
   data() {
     return {
-      mainTitle: "Контакты и Отзывы",
+      mainTitle: "Контакты",
       contactsTitle: "Как нас найти?",
+      markers: [{position:{lat:48.739268, lng:37.588998}}],
       contacts: [
         {
           name: "Адрес",
@@ -39,56 +61,78 @@ export default {
           link:
             "https://www.google.cz/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8F+%D0%A1%D1%82%D1%83%D1%81%D0%B0,+44,+%D0%9A%D1%80%D0%B0%D0%BC%D0%B0%D1%82%D0%BE%D1%80%D1%81%D1%8C%D0%BA,+%D0%94%D0%BE%D0%BD%D0%B5%D1%86%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+84300/@48.7393003,37.5867212,17z/data=!3m1!4b1!4m5!3m4!1s0x40df971caf802b47:0x28cd9c1770d5b012!8m2!3d48.7393003!4d37.5889099"
         },
-        { name: "Телефон", value: "+380(50)111-111-111" },
-        { name: "Електронная почта", value: "example@gmail.com" }
+        { name: "Телефон", value: "+380(50)947-75-06" },
+        { name: "Електронная почта", value: "lenf240576@ukr.net" },
+        {
+          name: "Граффик работы",
+          value: "Понедельник - Воскресенье с 9:00 до 22:00"
+        }
       ],
-      icons: ["fa-map-marked-alt", "fa-phone-square", "fa-envelope"]
+      contactIcons: [
+        "fa-map-marked-alt",
+        "fa-phone-square",
+        "fa-envelope",
+        "fas fa-business-time"
+      ],
+      socialIcons: [{ name: "Сofe_one", icon: " fa-instagram" }]
     };
   }
 };
 </script>
 <style lang="scss">
 .reviews-inner {
-  height: 85%;
+  height: 100%;
 
   .reviews-title {
     padding: 15px 0;
-    font-size: 25px;
+    font-size: 28px;
     margin-bottom: 0;
-    background: #d7dee3;
-    background: -moz-linear-gradient(
-      top,
-      #d7dee3 16%,
-      #d7dee3 16%,
-      #e5ebee 50%,
-      #f5f7f9 100%
-    );
-    background: -webkit-linear-gradient(
-      top,
-      #d7dee3 16%,
-      #d7dee3 16%,
-      #e5ebee 50%,
-      #f5f7f9 100%
-    );
-    background: linear-gradient(
-      to bottom,
-      #d7dee3 16%,
-      #d7dee3 16%,
-      #e5ebee 50%,
-      #f5f7f9 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7dee3', endColorstr='#f5f7f9',GradientType=0 );
   }
 }
 .reviews-inner_content {
   padding-top: 100px;
-  background: url("../assets/contact.jpg") no-repeat;
+  background: url("../assets/contacts.png") center no-repeat;
   background-size: cover;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 160px);
+  padding-left: 100px;
+  color: #1e1f26;
 
   ul {
     padding: 0;
     margin: 0;
+  }
+
+  i {
+    position: static;
+  }
+
+  a {
+    color: #1e1f26;
+
+    &:hover {
+      color: rgba(19, 82, 133, 0.719);
+    }
+  }
+  #map {
+    width: 400px;
+    height: 300px;
+    z-index: 99999;
+  }
+
+  .icons {
+    width: 300px;
+
+    .fab {
+      font-size: 40px;
+    }
+    p {
+      margin-bottom: 0;
+      height: auto;
+    }
+  }
+
+  .contacts-title {
+    font-size: 2.25rem;
   }
 
   .contact-list_element {
@@ -97,18 +141,10 @@ export default {
     height: 30px;
     line-height: 1;
     font-size: 17px;
-
-    i {
-      position: static;
-    }
   }
 }
 
-.reviews-title {
-  margin: 20px 0px;
-}
-
-.comment-form {
+/*.comment-form {
   button {
     background-color: #005b96;
     border: 0px;
@@ -119,5 +155,5 @@ export default {
       box-shadow: none !important;
     }
   }
-}
+}*/
 </style>

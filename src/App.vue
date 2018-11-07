@@ -15,7 +15,7 @@ export default {
         { name: "Главная", showIcon: false },
         { name: "Калькулятор цены", showIcon: false },
         { name: "Галерея", showIcon: false },
-        { name: "Контакты и Отзывы", showIcon: false }
+        { name: "Контакты ", showIcon: false }
       ]
     };
   }

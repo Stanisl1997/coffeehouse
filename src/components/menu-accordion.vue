@@ -137,7 +137,7 @@ export default {
           isSmall: true
         },
         {
-          name: "Кедоровый Латте",
+          name: "Кедроровый Латте",
           size: [
             { name: "S", amount: 0, price: 28 },
             { name: "M", amount: 0, price: 33 },
@@ -216,7 +216,7 @@ export default {
           isSmall: false
         },
         {
-          name: "Фруктовый коффе ",
+          name: "Фруктовый кофе ",
           size: [{ name: "M", amount: 0, price: 35 }],
           isMax: false,
           isSmall: false
@@ -350,19 +350,6 @@ export default {
         }
       ],
       colorsAddButtons: ["#1B7EAF", "#415AAC", "#063858"],
-      bgColorsListElements: [
-        "#f6cd61",
-        "#a8e6cf",
-        "#dcedc1",
-        "#e3f0ff",
-        "#edc951",
-        "#ffd3b6",
-        "#ffaaa5",
-        "#fe8a71",
-        "#eb6841",
-        "#ff8b94",
-        "#d2e7ff"
-      ],
       totallPrice: 0,
       cart: []
     };
@@ -398,6 +385,7 @@ export default {
     deleteFromCart(k) {
       this.totallPrice -= this.cart[k].price;
       this.cart.splice(k, 1);
+      console.log(this.cart)
     }
   }
 };
