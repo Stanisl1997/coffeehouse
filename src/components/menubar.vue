@@ -1,7 +1,10 @@
 <template>
   <div id="menubar">
   <div class="header-inner d-flex align-items-center justify-content-between">
-    <div class="logo navbar-brand col-lg-2"><router-link to="/banner" href="#">{{nameLogo}}</router-link></div>
+    <div class="logo navbar-brand col-lg-5"><router-link to="/banner" href="#">
+    {{nameLogo}}
+    <img  class="logoIcon" :src="logoIcon">
+    </router-link></div>
     <ul class="menu-bar  d-flex justify-content-end align-items-center m-0 p-0 col-lg-7">
       <li class="menu-bar_element d-flex" @mouseover="onMouseOver(element)" @mouseleave="onMouseLeave(element)" v-for="(element,i) in elements" :key="element.name" ><router-link :to="pages[i]" >{{element.name}}
         <transition name="icon-move">
@@ -13,11 +16,13 @@
   </div>
 </template>
 <script>
+
+import logo from "../assets/item35copy.png"
 export default {
   props: ["elements"],
   data() {
     return {
-      nameLogo: "Кофейня №1",
+      nameLogo: "Кофейня",
       icons: [
         "fa-cookie-bite",
         "fa-calculator",
@@ -25,7 +30,8 @@ export default {
         "fa-phone",
         "fa-star"
       ],
-      pages: ["/banner", "/price-calculator", "/gallery", "/reviews"]
+      pages: ["/banner", "/price-calculator", "/gallery", "/reviews"],
+      logoIcon: logo
     };
   },
   methods: {
@@ -82,7 +88,9 @@ ul {
     text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
   }
 }
-
+.logoIcon {
+  height: 123px;
+}
 .menu-bar_element {
   padding: 5px 10px;
   margin-left: 10px;
