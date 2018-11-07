@@ -1,7 +1,7 @@
 <template>
   <div class="quote-slider w-100">
     <transition-group>
-      <blockquote class="blockquote text-center" v-for="(quote) in quoteContent" v-show="quote.isActive" :key="quote.text">
+      <blockquote class="blockquote text-center w-100" v-for="(quote) in quoteContent" v-show="quote.isActive" :key="quote.text">
         <p class="mb-0">{{quote.text}}</p>
         <footer class="blockquote-footer">{{quote.author}} <cite title="Source Title">{{quote.source}}</cite></footer>
       </blockquote>
@@ -76,13 +76,13 @@ export default {
 <style lang="scss">
 .quote-slider {
   position: relative;
+  padding-top: 300px;
 } 
 
 blockquote {
+  background-color: rgba($color: #000000, $alpha: 0.5) ;
   position: absolute;
-  width: 700px;
-  left: 370px;
-
+  color:#fff;
   p {
     height: 70px;
   }
@@ -95,13 +95,13 @@ blockquote {
 
 .slider-controls {
   width: 50%;
-  margin: 70px auto;
   padding-top: 150px;
+  margin: 0 auto;
 
   a {
     width: 8px;
     height: 8px;
-    background-color: #525252;
+    background-color: #000;
     border-radius: 50%;
     transition: background-color 0.5s;
   }
@@ -128,5 +128,6 @@ blockquote {
   transform: translateX(-200px);
   opacity: 0;
 }
+
 
 </style>
