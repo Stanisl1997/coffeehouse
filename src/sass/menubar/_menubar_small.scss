@@ -1,0 +1,38 @@
+.header-inner {
+  flex-direction: column;
+  width: 100%;
+
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0px 65px;
+
+    a {
+      font-size: 27px;
+      margin-right: 0;
+    }
+
+
+    img {
+      height: 80px;
+    }
+  }
+
+  .toggle-bar {
+    font-size: 30px;
+    position: inherit;
+  }
+
+  .menu-bar {
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    .menu-bar_element {
+      margin: 0;
+      width: 200px;
+    }
+  }
+
+}

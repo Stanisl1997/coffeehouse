@@ -15,12 +15,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.banner-inner {
-  width: 100%;
-  background: url("../assets/item12.jpg") center no-repeat;
-  background-size: cover;
-  height:calc(100vh - 100px);
-  color:#000;
-}
-
+@import "./../sass/banner/banner.scss";
+@import "../sass/global/adaptive.scss";
 </style>

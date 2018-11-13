@@ -1,0 +1,79 @@
+.reviews-inner {
+  height: 100%;
+
+  .reviews-title {
+    padding: 15px 0;
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+}
+
+.reviews-inner_content {
+  padding-top: 100px;
+  background: url("~/../assets/contacts.png") center no-repeat;
+  background-size: cover;
+  height: calc(100vh - 160px);
+  padding-left: 100px;
+  color: #1e1f26;
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  i {
+    position: static;
+  }
+
+  a {
+    color: #1e1f26;
+
+    &:hover {
+      color: rgba(19, 82, 133, 0.719);
+    }
+  }
+
+  #map {
+    width: 400px;
+    height: 300px;
+    z-index: 99999;
+  }
+
+  .icons {
+    width: 300px;
+
+    .fab {
+      font-size: 40px;
+    }
+
+    p {
+      margin-bottom: 0;
+      height: auto;
+    }
+  }
+
+  .contacts-title {
+    font-size: 2.25rem;
+  }
+
+  .contact-list_element {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    height: 30px;
+    line-height: 1;
+    font-size: 17px;
+  }
+}
+
+/*.comment-form {
+  button {
+    background-color: #005b96;
+    border: 0px;
+
+    &:focus {
+      outline: none !important;
+      border: 0px;
+      box-shadow: none !important;
+    }
+  }
+}*/

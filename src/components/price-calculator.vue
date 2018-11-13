@@ -2,7 +2,7 @@
   <div class="calculator-inner">
     <h1 class="calculator-inner_title text-center">{{calcTitle}}</h1>
     <div class="calculator-inner_content">
-        <menu-accordion></menu-accordion>
+        <menu-accordeon></menu-accordeon>
     </div>
   </div>
 </template>
@@ -16,16 +16,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.calculator-inner_content {
-  background: url(../assets/item19.jpg) no-repeat;
-  background-position-y: 40%;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.calculator-inner_title {
-  padding: 15px 0;
-  font-size: 25px;
-  margin-bottom: 0;
-}
+@import "./../sass/price-calculator/price-calculator.scss";
+@import "./../sass/global/adaptive.scss";
 </style>

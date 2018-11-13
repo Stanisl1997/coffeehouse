@@ -4,20 +4,26 @@
     <div class="logo navbar-brand col-lg-5"><router-link to="/banner" href="#">
     {{nameLogo}}
     <img  class="logoIcon" :src="logoIcon">
-    </router-link></div>
-    <ul class="menu-bar  d-flex justify-content-end align-items-center m-0 p-0 col-lg-7">
+    </router-link>
+    <div class="toggle-button">
+      <i class="far  toggle-bar" v-show="mobile" @click.prevent="toggleMenu = !toggleMenu" :class="{'fa-caret-square-up' : toggleMenu , 'fa-caret-square-down' : !toggleMenu}"></i>
+    </div></div>
+    
+    <transition name="slide">
+     <ul class="menu-bar justify-content-end align-items-center col-lg-7" v-show="toggleMenu">
       <li class="menu-bar_element d-flex" @mouseover="onMouseOver(element)" @mouseleave="onMouseLeave(element)" v-for="(element,i) in elements" :key="element.name" ><router-link :to="pages[i]" >{{element.name}}
         <transition name="icon-move">
         <i v-if="!element.showIcon" class="fas" :class='icons[i]'></i>
          </transition>
       </router-link></li>
     </ul>
+    </transition>
+   
   </div>
   </div>
 </template>
 <script>
-
-import logo from "../assets/item35copy.png"
+import logo from "../assets/item35copy.png";
 export default {
   props: ["elements"],
   data() {
@@ -31,7 +37,9 @@ export default {
         "fa-star"
       ],
       pages: ["/banner", "/price-calculator", "/gallery", "/reviews"],
-      logoIcon: logo
+      logoIcon: logo,
+      mobile: true,
+      toggleMenu: false
     };
   },
   methods: {
@@ -45,77 +53,5 @@ export default {
 };
 </script>
 <style lang="scss">
-.header-inner {
-  padding-top: 20px;
-  width: 1100px;
-  margin: 0 auto;
-}
-
-a {
-  text-decoration: none;
-  color: #1e1f26;
-
-  &:hover {
-    color: #1e1f26;
-    text-decoration: none;
-  }
-}
-
-.menu-bar_element > a {
-  padding: 3px 5px;
-  margin-bottom: 0px;
-  margin-right: 4px;
-  font-size: 14px;
-  font-size: bold;
-
-  &:hover {
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.5s;
-    text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
-  }
-}
-
-ul {
-  list-style: none;
-}
-
-.logo {
-  font-size: 47px;
-  transition: all 0.5s;
-  &:hover {
-    transition: all 0.5s;
-    text-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
-  }
-}
-.logoIcon {
-  height: 123px;
-}
-.menu-bar_element {
-  padding: 5px 10px;
-  margin-left: 10px;
-  position: relative;
-}
-i {
-  position: absolute;
-  top: 10px;
-  right: -5px;
-}
-
-.icon-move-enter-active {
-  transition: all 0.4s ease;
-}
-
-.icon-move-leave-active {
-  transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.icon-move-enter {
-  transform: translateY(10px);
-  opacity: 0;
-}
-.icon-move-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
-}
+@import "../sass/menubar/_menubar.scss";
 </style>

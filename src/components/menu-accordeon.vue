@@ -45,6 +45,26 @@
             </ul>
       </li>
     </ul>
+    <button class="btn accordeon " @click.prevent ="slideMenu($event)" >Чай</button>
+  <ul class="tea-list main-list flex-column  justify-content-between" >
+      <li class="tea-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in teaMenuItems" :key="item.name">{{item.name}}
+        <ul class="price-list" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
+              <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                 </li>
+            </ul>
+      </li>
+    </ul>
+    <button class="btn accordeon " @click.prevent ="slideMenu($event)" >Коктейли</button>
+  <ul class="coctails-list main-list flex-column  justify-content-between" >
+      <li class="coctails-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in coctailMenuItems" :key="item.name">{{item.name}}
+        <ul class="price-list" :class="{maxSizeMiss : !item.isMax,smallSizeMiss : !item.isSmall}">
+              <li class="price-list_element" v-for="(size,j) in item.size" :key="size.name">
+                <button class="btn btn-success" :style="{backgroundColor:colorsAddButtons[j+1]}" @click='priceIncrease(j,item)'>{{size.name}}</button><span class="price">{{size.price }} грн</span>
+                 </li>
+            </ul>
+      </li>
+    </ul>
     </div>
     <div class="accordeon-inner_cart col-xl-5" >
 <h3 class="mt-5">Всего ваш заказ будет стоить : {{totallPrice | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}}</h3>
@@ -60,6 +80,7 @@
       </div>
     </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -137,7 +158,7 @@ export default {
           isSmall: true
         },
         {
-          name: "Кедроровый Латте",
+          name: "Кедровый Латте",
           size: [
             { name: "S", amount: 0, price: 28 },
             { name: "M", amount: 0, price: 33 },
@@ -349,6 +370,136 @@ export default {
           isSmall: false
         }
       ],
+      teaMenuItems: [
+        {
+          name: "Имбирный",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Цитрусовый",
+          size: [{ name: "M", amount: 0, price: 28 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Пряный",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Клюква+Апельсин",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Смородина+Базилик",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Имбирь+Лайм",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Облепиха+Яблоко",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Облепиха+Чебрец",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Брусника+Апельсин",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Апельсиновый лемонад",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        }
+      ],
+      coctailMenuItems: [
+        {
+          name: "Дайкири",
+          size: [{ name: "M", amount: 0, price: 80 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Найк Уокер",
+          size: [{ name: "M", amount: 0, price: 90 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Аммаретто Сауер",
+          size: [{ name: "M", amount: 0, price: 90 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Кловер клаб",
+          size: [{ name: "M", amount: 0, price: 95 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Бейлиз бюти",
+          size: [{ name: "M", amount: 0, price: 80 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Мохито",
+          size: [{ name: "M", amount: 0, price: 70 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Кофе по-ирландски",
+          size: [{ name: "M", amount: 0, price: 75 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Глинтвейн",
+          size: [{ name: "M", amount: 0, price: 25 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Апероль спритц",
+          size: [{ name: "M", amount: 0, price: 95 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Hugo",
+          size: [{ name: "M", amount: 0, price: 90 }],
+          isMax: false,
+          isSmall: false
+        },
+        {
+          name: "Негрони",
+          size: [{ name: "M", amount: 0, price: 90 }],
+          isMax: false,
+          isSmall: false
+        }
+      ],
       colorsAddButtons: ["#1B7EAF", "#415AAC", "#063858"],
       totallPrice: 0,
       cart: []
@@ -385,163 +536,12 @@ export default {
     deleteFromCart(k) {
       this.totallPrice -= this.cart[k].price;
       this.cart.splice(k, 1);
-      console.log(this.cart)
+      console.log(this.cart);
     }
   }
 };
 </script>
-<style scoped lang="scss">
-ul {
-  padding-left: 0;
-}
-.row {
-  padding-bottom: calc(100vh - 740px);
-}
-.accordeon-inner_content {
-  width: 650px;
-  height: 100%;
-
-  .accordeon {
-    width: 100%;
-    transition: all 0.4s ease-in-out;
-    border-radius: 3px;
-    font-size: 18px;
-    margin-top: 5px;
-    opacity: 0.9;
-    font-weight: bold;
-    transition: all 0.4s;
-    background-color: #1e1f26;
-    color: #fffef9;
-    &:hover {
-      transition: all 0.4s;
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-      background-color: #83d0c9;
-      color: #1e1f26;
-      opacity: 1;
-    }
-    &:focus {
-      box-shadow: none !important;
-    }
-  }
-}
-.main-list {
-  margin-top: 16px;
-  max-height: 0px;
-  transition: max-height 0.5s ease-out;
-  margin: 0px;
-  overflow: hidden;
-}
-.main-list_element {
-  margin: 5px 0px;
-  border-radius: 3px;
-  padding: 5px 5px;
-  font-size: 15px;
-  font-weight: 500;
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-}
-.price-list {
-  width: 400px;
-  .price-list_element {
-    width: 92px;
-    padding-right: 5px;
-  }
-  .price-list_element > button {
-    padding: 0px;
-    font-size: 16px;
-    font-weight: bold;
-    border-color: transparent;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-  }
-
-  .price {
-    font-size: 17px;
-    margin-left: 5px;
-  }
-}
-.maxSizeMiss {
-  padding-right: 155px;
-}
-.smallSizeMiss {
-  width: 241px;
-}
-
-.fa-shopping-cart {
-  position: static;
-  font-size: 18px;
-}
-
-.accordeon-inner_cart {
-  position: sticky;
-  top: 10px;
-  align-self: flex-start;
-  h3,h5 {
-    color:beige;
-  }
-}
-
-.cart {
-  background-color:rgba($color: #1e1f26, $alpha: 0.7);
-  border-radius: 4px;
-
-  ul {
-    padding-left: 0;
-    margin-bottom: 0;
-    min-height: 450px;
-  }
-  .order {
-    width: 150px;
-  }
-  .cart-list_element {
-    height: 30px;
-    font-size: 16px;
-    color:azure;
-    font-weight:500;
-    .fa-times-circle {
-      color: #ff6f69;
-      position: static;
-      font-size: 25px;
-      margin-left: -5px;
-      margin-top: 1px;
-      transition: all 0.6s;
-      &:hover {
-        font-size: 27px;
-        color: #cc2a36;
-      }
-    }
-    button {
-      border: 0px;
-      outline: none;
-      cursor: pointer;
-      background-color: transparent;
-      padding: 0;
-      margin: 0;
-    }
-  }
-}
-
-.description {
-  width: 40%;
-  text-align: center;
-}
-
-.items-list-enter-active {
-  transition: all 0.4s ease-in;
-}
-.items-list-leave-active {
-  transition: all 0.4s ease-out;
-  position: absolute;
-}
-.items-list-enter {
-  opacity: 0;
-  transform: translateY(200px);
-}
-.items-list-leave-to {
-  opacity: 0;
-  transform: translateY(200px);
-}
-.items-list-move {
-  transition: transform 0.3s;
-}
+<style lang="scss">
+@import "./../sass/menu-accordeon/_menu-accordeon.scss";
+@import "./../sass/global/adaptive.scss";
 </style>

@@ -16,8 +16,10 @@ export default {
   data() {
     return {
       randNum: 0,
-      quoteContent: [{
-          text: "Встал ради чашки кофе, а потом не заметил, как день прошёл. И так каждое утро...",
+      quoteContent: [
+        {
+          text:
+            "Встал ради чашки кофе, а потом не заметил, как день прошёл. И так каждое утро...",
           author: "Валиуллин Ринат",
           source: "«Где валяются поцелуи»",
           showQuote: true,
@@ -31,22 +33,24 @@ export default {
           isActive: false
         },
         {
-          text: "«Если это кофе, пожалуйста, принесите мне чаю, а если это чай, пожалуйста, принесите мне кофе»",
+          text:
+            "«Если это кофе, пожалуйста, принесите мне чаю, а если это чай, пожалуйста, принесите мне кофе»",
           author: "Авраам Линкольн",
           source: "",
           showQuote: false,
           isActive: false
         },
         {
-          text: "«Запахло свежемолотыми зёрнами — аромат, отделяющий день от ночи...»",
+          text:
+            "«Запахло свежемолотыми зёрнами — аромат, отделяющий день от ночи...»",
           author: "Харуки Мураками",
           source: "«Бесцветный Цкуру Тадзаки и годы его странствий»",
           showQuote: false,
           isActive: false
         }
       ],
-      quoteCounter:0
-    }
+      quoteCounter: 0
+    };
   },
   methods: {
     controlsChange(i) {
@@ -63,71 +67,20 @@ export default {
         if (j !== this.quoteCounter) {
           this.quoteContent[j].isActive = false;
         }
+      }
+      this.quoteCounter === this.quoteContent.length - 1
+        ? (this.quoteCounter = 0)
+        : this.quoteCounter++;
     }
-      (this.quoteCounter === this.quoteContent.length - 1) ? this.quoteCounter = 0 : this.quoteCounter++;
-  }
   },
   mounted: function quotesChange() {
-    setInterval(()=>{this.changeQuotes()}, 5000)
+    setInterval(() => {
+      this.changeQuotes();
+    }, 5000);
   }
-}
-
+};
 </script>
 <style lang="scss">
-.quote-slider {
-  position: relative;
-  padding-top: 300px;
-} 
-
-blockquote {
-  background-color: rgba($color: #000000, $alpha: 0.5) ;
-  position: absolute;
-  color:#fff;
-  p {
-    height: 70px;
-  }
-
-  & > footer {
-    color:papayawhip !important;
-  }
-  
-}
-
-.slider-controls {
-  width: 50%;
-  padding-top: 150px;
-  margin: 0 auto;
-
-  a {
-    width: 8px;
-    height: 8px;
-    background-color: #000;
-    border-radius: 50%;
-    transition: background-color 0.5s;
-  }
-
-  .active {
-    background-color:mintcream;
-  }
-}
-
-.v-enter-active {
-  transition: all 0.6s ease;
-}
-
-.v-leave-active {
-  transition: all 0.6s;
-}
-
-.v-enter {
-  opacity: 0;
-  transform: translateX(200px);
-}
-
-.v-leave-to {
-  transform: translateX(-200px);
-  opacity: 0;
-}
-
-
+@import "./../sass/quote-slider/quote-slider.scss";
+@import "./../sass/global/adaptive.scss";
 </style>

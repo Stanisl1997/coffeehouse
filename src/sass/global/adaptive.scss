@@ -1,0 +1,53 @@
+@media screen and (max-width: 426px) {
+  // Mobile devises 
+  @import "./../App/App_small";
+  @import "./../banner/banner_small";
+  @import "./../gallery/gallery_small";
+  @import "./../menu-accordeon/menu-accordeon_small";
+  @import "./../menubar/menubar_small";
+  @import "./../price-calculator/price-calculator_small";
+  @import "./../quote-slider/quote-slider_small";
+  @import "./../reviews/reviews_small";
+}
+
+
+@media screen and (max-width: 768px) {
+  // Tablets devises 
+  @import "./../App/App_medium";
+  @import "./../banner/banner_medium";
+  @import "./../gallery/gallery_medium";
+  @import "./../menu-accordeon/menu-accordeon_medium";
+  @import "./../menubar/menubar_medium";
+  @import "./../price-calculator/price-calculator_medium";
+  @import "./../quote-slider/quote-slider_medium";
+  @import "./../reviews/reviews_medium";
+}
+
+@media screen and (max-width: 1024px) {
+  // Large screen size devises 
+  @import "./../App/App_large";
+  @import "./../banner/banner_large";
+  @import "./../gallery/gallery_large";
+  @import "./../menu-accordeon/menu-accordeon_large";
+  @import "./../menubar/menubar_large";
+  @import "./../price-calculator/price-calculator_large";
+  @import "./../quote-slider/quote-slider_large";
+  @import "./../reviews/reviews_large";
+}
+
+
+
+
+/*
+@media screen and (min-width: 1200px) {
+  // Extra large screen size devises 
+  @import "./../App/App_xl";
+  @import "./../banner/banner_xl";
+  @import "./../gallery/gallery_xl";
+  @import "./../menu-accordeon/menu-accordeon_xl";
+  @import "./../menubar/menubar_xl";
+  @import "./../price-calculator/price-calculator_xl";
+  @import "./../quote-slider/quote-slider_xl";
+  @import "./../reviews/reviews_xl";
+}
+*/

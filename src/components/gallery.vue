@@ -92,25 +92,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.gallery-inner {
-  overflow-x: hidden !important;
-}
-.gallery-title {
-  padding: 15px 0;
-  font-size: 25px;
-  margin-bottom: 0;
-}
-.card-columns {
-  width: 95%;
-  margin: 0 auto;
-}
-.card {
-  padding: 0px;
-  transition: all 0.5s;
-  &:hover {
-    cursor: pointer;
-    transition: all 0.5s;
-    box-shadow: 0 18px 27px rgba(0, 0, 0, 0.5);
-  }
-}
+@import "../sass/gallery/_gallery.scss";
+@import "../sass/global/adaptive.scss";
 </style>

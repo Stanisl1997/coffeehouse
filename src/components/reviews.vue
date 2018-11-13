@@ -35,7 +35,7 @@
       <div class="contacts col-xl-6 ml-auto">
         <h3 class="contacts-title">{{contactsTitle}}</h3>
         <div class="icons d-flex justify-content-between">
-            <a href="https://www.instagram.com/cofe_one/?hl=ru" class=" d-flex align-items-center " v-for="(item,i) in socialIcons" :key='item.name'>
+            <a href="https://www.instagram.com/cofe_one/?hl=ru" target="_blank" class=" d-flex align-items-center " v-for="(item,i) in socialIcons" :key='item.name'>
               <i class="fab" :class='socialIcons[i].icon'></i>
               <p class="ml-2">{{item.name}}</p>
             </a>
@@ -53,7 +53,7 @@ export default {
     return {
       mainTitle: "Контакты",
       contactsTitle: "Как нас найти?",
-      markers: [{position:{lat:48.739268, lng:37.588998}}],
+      markers: [{ position: { lat: 48.739268, lng: 37.588998 } }],
       contacts: [
         {
           name: "Адрес",
@@ -80,80 +80,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.reviews-inner {
-  height: 100%;
-
-  .reviews-title {
-    padding: 15px 0;
-    font-size: 28px;
-    margin-bottom: 0;
-  }
-}
-.reviews-inner_content {
-  padding-top: 100px;
-  background: url("../assets/contacts.png") center no-repeat;
-  background-size: cover;
-  height: calc(100vh - 160px);
-  padding-left: 100px;
-  color: #1e1f26;
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  i {
-    position: static;
-  }
-
-  a {
-    color: #1e1f26;
-
-    &:hover {
-      color: rgba(19, 82, 133, 0.719);
-    }
-  }
-  #map {
-    width: 400px;
-    height: 300px;
-    z-index: 99999;
-  }
-
-  .icons {
-    width: 300px;
-
-    .fab {
-      font-size: 40px;
-    }
-    p {
-      margin-bottom: 0;
-      height: auto;
-    }
-  }
-
-  .contacts-title {
-    font-size: 2.25rem;
-  }
-
-  .contact-list_element {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    height: 30px;
-    line-height: 1;
-    font-size: 17px;
-  }
-}
-
-/*.comment-form {
-  button {
-    background-color: #005b96;
-    border: 0px;
-
-    &:focus {
-      outline: none !important;
-      border: 0px;
-      box-shadow: none !important;
-    }
-  }
-}*/
+@import "./../sass/reviews/reviews.scss";
+@import "./../sass/global/adaptive.scss";
 </style>
