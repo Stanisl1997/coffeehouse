@@ -39,7 +39,7 @@ export default {
       pages: ["/banner", "/price-calculator", "/gallery", "/reviews"],
       logoIcon: logo,
       mobile: true,
-      toggleMenu: true,
+      toggleMenu: false,
       window: {
         width: 0
       }
@@ -51,6 +51,11 @@ export default {
     },
     onMouseLeave(element) {
       element.showIcon = false;
+    }
+  },
+  mounted: function menuShow() {
+    if (this.window.width >= 426) {
+      return (this.toggleMenu = true);
     }
   }
 };

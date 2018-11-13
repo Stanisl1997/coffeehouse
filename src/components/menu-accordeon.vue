@@ -536,7 +536,6 @@ export default {
     deleteFromCart(k) {
       this.totallPrice -= this.cart[k].price;
       this.cart.splice(k, 1);
-      console.log(this.cart);
     }
   }
 };

@@ -19,6 +19,10 @@
 
     .contact-list {
       margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 240px;
 
       .contact-list_element {
         font-size: 14px;
@@ -26,7 +30,7 @@
 
         a {
           text-align: center;
-          width: 300px;
+          width: 245px;
         }
       }
 
