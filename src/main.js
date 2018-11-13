@@ -14,6 +14,7 @@ import gallery from "./components/gallery.vue";
 import reviews from "./components/reviews.vue";
 
 
+
 Vue.component("menubar", Menu);
 Vue.component("banner", Banner);
 Vue.component("qSlider", qSlider);
@@ -21,6 +22,7 @@ Vue.component("price-calculator", priceCalculator);
 Vue.component("menu-accordeon", menuAccordeon);
 Vue.component("gallery", gallery);
 Vue.component("reviews", reviews);
+
 
 Vue.use(VueRouter);
 Vue.use(Vue2Filters);
@@ -54,6 +56,30 @@ var router = new VueRouter({
     }
   ]
 });
+
+Vue.mixin({
+  data() {
+    return {
+      window: {
+        width: 0
+      }
+    }
+
+  },
+  methods: {
+    handleResize() {
+      this.window.width = window.innerWidth;
+    }
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+});
+
 new Vue({
   el: "#app",
   router: router,

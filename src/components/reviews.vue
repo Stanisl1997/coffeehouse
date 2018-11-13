@@ -1,6 +1,6 @@
 <template>
   <div class="reviews-inner">
-    <h1 class="reviews-title text-center">{{mainTitle}}</h1>
+    <h1 class="reviews-title text-center" v-show="window.width >= 425">{{mainTitle}}</h1>
     <div class="reviews-inner_content d-flex justify-content-between">
       <!--<form @click.prevent class="comment-form col-xl-6  ml-auto">                        Wont work without PHP or other backend
         <div class="form-group">
@@ -21,7 +21,6 @@
   :center="{lat:48.739268, lng:37.588998}"
   :zoom="17"
   map-type-id="terrain"
-  style="width: 600px; height: 400px"
 >
   <GmapMarker
     :key="index"
@@ -41,7 +40,7 @@
             </a>
         </div>
         <ul class="contact-list mt-2">
-          <li class="contact-list_element d-flex justify-content-start align-items-center mt-2" v-for="(contact,i) in contacts" :key="contact.name"><a :href="contact.link" target="_blank"><i class="fas pr-2" :class='contactIcons[i]'></i>{{contact.name}} : {{contact.value}}</a></li>
+          <li class="contact-list_element d-flex  align-items-center mt-2" v-for="(contact,i) in contacts" :key="contact.name"><a :href="contact.link" target="_blank"><i class="fas pr-2" :class='contactIcons[i]'></i>{{contact.name}} : {{contact.value}}</a></li>
         </ul>
       </div>
     </div>

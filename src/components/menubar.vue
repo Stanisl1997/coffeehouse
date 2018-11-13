@@ -5,7 +5,7 @@
     {{nameLogo}}
     <img  class="logoIcon" :src="logoIcon">
     </router-link>
-    <div class="toggle-button">
+    <div class="toggle-button" v-show="window.width <= 425">
       <i class="far  toggle-bar" v-show="mobile" @click.prevent="toggleMenu = !toggleMenu" :class="{'fa-caret-square-up' : toggleMenu , 'fa-caret-square-down' : !toggleMenu}"></i>
     </div></div>
     
@@ -18,8 +18,8 @@
       </router-link></li>
     </ul>
     </transition>
-   
   </div>
+  <hr>
   </div>
 </template>
 <script>
@@ -39,7 +39,10 @@ export default {
       pages: ["/banner", "/price-calculator", "/gallery", "/reviews"],
       logoIcon: logo,
       mobile: true,
-      toggleMenu: false
+      toggleMenu: true,
+      window: {
+        width: 0
+      }
     };
   },
   methods: {

@@ -1,0 +1,51 @@
+.reviews-inner_content {
+  flex-direction: column-reverse;
+  padding-left: 0;
+  height: auto;
+  padding-top: 30px;
+
+
+  .vue-map-container {
+    width: 330px;
+    height: 270px;
+    margin: 20px auto;
+  }
+
+  .contacts {
+    .contacts-title {
+      text-align: center;
+      font-size: 23px;
+    }
+
+    .contact-list {
+      margin-bottom: 20px;
+
+      .contact-list_element {
+        font-size: 14px;
+        text-align: right;
+
+        a {
+          text-align: center;
+          width: 300px;
+        }
+      }
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .icons {
+      padding-top: 20px;
+      font-size: 14px;
+      width: 120px;
+      margin: 0 auto;
+
+      i {
+        font-size: 30px;
+      }
+    }
+
+  }
+
+}

@@ -1,9 +1,11 @@
 ul {
   padding-left: 0;
 }
+
 .row {
-  padding-bottom: calc(100vh - 740px);
+  padding-bottom: calc(100vh - 835px);
 }
+
 .accordeon-inner_content {
   width: 650px;
   height: 100%;
@@ -19,6 +21,7 @@ ul {
     transition: all 0.4s;
     background-color: #1e1f26;
     color: #fffef9;
+
     &:hover {
       transition: all 0.4s;
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
@@ -26,11 +29,13 @@ ul {
       color: #1e1f26;
       opacity: 1;
     }
+
     &:focus {
       box-shadow: none !important;
     }
   }
 }
+
 .main-list {
   margin-top: 16px;
   max-height: 0px;
@@ -38,6 +43,7 @@ ul {
   margin: 0px;
   overflow: hidden;
 }
+
 .main-list_element {
   margin: 5px 0px;
   border-radius: 3px;
@@ -46,13 +52,16 @@ ul {
   font-weight: 500;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
+
 .price-list {
   width: 400px;
+
   .price-list_element {
     width: 92px;
     padding-right: 5px;
   }
-  .price-list_element > button {
+
+  .price-list_element>button {
     padding: 0px;
     font-size: 16px;
     font-weight: bold;
@@ -67,9 +76,11 @@ ul {
     margin-left: 5px;
   }
 }
+
 .maxSizeMiss {
   padding-right: 155px;
 }
+
 .smallSizeMiss {
   width: 241px;
 }
@@ -83,6 +94,7 @@ ul {
   position: sticky;
   top: 10px;
   align-self: flex-start;
+
   h3,
   h5 {
     color: beige;
@@ -96,16 +108,19 @@ ul {
   ul {
     padding-left: 0;
     margin-bottom: 0;
-    min-height: 450px;
+    min-height: 392px;
   }
+
   .order {
     width: 150px;
   }
+
   .cart-list_element {
     height: 30px;
     font-size: 16px;
     color: azure;
     font-weight: 500;
+
     .fa-times-circle {
       color: #ff6f69;
       position: static;
@@ -113,11 +128,13 @@ ul {
       margin-left: -5px;
       margin-top: 1px;
       transition: all 0.6s;
+
       &:hover {
         font-size: 27px;
         color: #cc2a36;
       }
     }
+
     button {
       border: 0px;
       outline: none;
@@ -137,18 +154,22 @@ ul {
 .items-list-enter-active {
   transition: all 0.4s ease-in;
 }
+
 .items-list-leave-active {
   transition: all 0.4s ease-out;
   position: absolute;
 }
+
 .items-list-enter {
   opacity: 0;
   transform: translateY(200px);
 }
+
 .items-list-leave-to {
   opacity: 0;
   transform: translateY(200px);
 }
+
 .items-list-move {
   transition: transform 0.3s;
 }
