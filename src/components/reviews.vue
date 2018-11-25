@@ -21,6 +21,7 @@
   :center="{lat:48.739268, lng:37.588998}"
   :zoom="17"
   map-type-id="terrain"
+  class="col-md-6"
 >
   <GmapMarker
     :key="index"
@@ -31,7 +32,7 @@
     @click="center=m.position"
   />
 </GmapMap>
-      <div class="contacts col-xl-5 mr-auto ml-auto">
+      <div class="contacts col-xl-5 col-md-5 mr-auto ml-auto">
         <h3 class="contacts-title">{{contactsTitle}}</h3>
         <div class="icons d-flex justify-content-between">
             <a href="https://www.instagram.com/cofe_one/?hl=ru" target="_blank" class=" d-flex align-items-center " v-for="(item,i) in socialIcons" :key='item.name'>

@@ -1,0 +1,26 @@
+.reviews-inner_content {
+  padding-left: 20px;
+
+  .contacts-title {
+    font-size: 1.45rem;
+  }
+
+  .vue-map-container {
+    height: 350px;
+  }
+
+  .contacts {
+    height: 350px;
+  }
+
+  .contact-list {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .contact-list_element {
+      font-size: 13px;
+    }
+  }
+}

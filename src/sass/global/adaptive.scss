@@ -1,5 +1,5 @@
-@media screen and (max-width: 426px) {
-  // Mobile devises 
+@media (min-width: 320px) and (max-width: 426px) {
+  // Mobile devises  
   @import "./../App/App_small";
   @import "./../banner/banner_small";
   @import "./../gallery/gallery_small";
@@ -11,7 +11,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media (min-width: 426px) and (max-width: 768px) {
   // Tablets devises 
   @import "./../App/App_medium";
   @import "./../banner/banner_medium";
@@ -23,7 +23,7 @@
   @import "./../reviews/reviews_medium";
 }
 
-@media screen and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   // Large screen size devises 
   @import "./../App/App_large";
   @import "./../banner/banner_large";
@@ -39,7 +39,7 @@
 
 
 /*
-@media screen and (min-width: 1200px) {
+@media only screen and (min-width: ) and (min-width: 1200px) {
   // Extra large screen size devises 
   @import "./../App/App_xl";
   @import "./../banner/banner_xl";

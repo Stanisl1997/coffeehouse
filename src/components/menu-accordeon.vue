@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid">
   <div class="row d-flex ">
-  <div class="accordeon-inner_content col-xl-7 mt-5">
+  <div class="accordeon-inner_content col-lg-7 col-xl-7 mt-5">
   <button class="btn accordeon" @click.prevent="slideMenu($event)" >Классический кофе</button>
     <ul class="classic-list main-list flex-column justify-content-between">
       <li class="classic-list_element main-list_element d-flex align-items-center justify-content-between" v-for="(item) in classicCoffeItems" :key="item.name">{{item.name}}
@@ -66,7 +66,7 @@
       </li>
     </ul>
     </div>
-    <div class="accordeon-inner_cart col-xl-5" >
+    <div class="accordeon-inner_cart col-lg-5 col-xl-5" >
 <h3 class="mt-5">Всего ваш заказ будет стоить : {{totallPrice | currency('₴',0,{ symbolOnLeft: false,spaceBetweenAmountAndSymbol: true })}}</h3>
 <h5 class="mt-2">Ваш заказ <i class="fas fa-shopping-cart"></i>: </h5>
       <div class="cart pt-3 ml-auto mr-auto">
